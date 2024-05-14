@@ -28,7 +28,7 @@ public class controllerBarang {
     
     public void tampil_tabel(){
         TabelModelBarang tabelBrg = new TabelModelBarang (listBrg);
-        frame.getTblBarang.setModel(tabelBrg);
+        frame.getTblBarang().setModel(tabelBrg);
     }
     
     public void tambahData() {
@@ -37,8 +37,8 @@ public class controllerBarang {
     } else {
         brg.setKode(frame.getTxtKode().getText());
         brg.setNama(frame.getTxtNama().getText());
-        brg.setJumlah(integer.parseInt(frame.getTxtJumlah().getText()));
-       brg.setHarga(integer.parseInt(frame.getTxtHarga().getText()));
+        brg.setJumlah(Integer.parseInt(frame.getTxtJumlah().getText()));
+       brg.setHarga(Integer.parseInt(frame.getTxtHarga().getText()));
        brg.setMerek(frame.getTxtMerek().getText());
        daoBrg.tambah(brg);
        JOptionPane.showMessageDialog(frame, "Berhasil menambahkan data Baru");
@@ -51,8 +51,8 @@ public class controllerBarang {
     } else {
         brg.setKode(frame.getTxtKode().getText());
         brg.setNama(frame.getTxtNama().getText());
-        brg.setJumlah(integer.parseInt(frame.getTxtJumlah().getText()));
-       brg.setHarga(integer.parseInt(frame.getTxtHarga().getText()));
+        brg.setJumlah(Integer.parseInt(frame.getTxtJumlah().getText()));
+       brg.setHarga(Integer.parseInt(frame.getTxtHarga().getText()));
        brg.setMerek(frame.getTxtMerek().getText());
        daoBrg.ubah(brg);
        JOptionPane.showMessageDialog(frame, "Berhasil mengubah data");
@@ -66,11 +66,11 @@ public class controllerBarang {
     }
     
     public void bersih() {
-       frame.setTextKode("");
-       frame.setTextNama("");
-       frame.setTextJumlah(0);
-       frame.setTextHarga(0);
-       frame.setTextMerek("");
+       frame.setTxtKode("");
+       frame.setTxtNama("");
+       frame.setTxtJumlah(0);
+       frame.setTxtHarga(0);
+       frame.setTxtMerek("");
     }
     public void keluar() {
         frame.dispose();
