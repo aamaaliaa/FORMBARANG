@@ -4,7 +4,7 @@
  */
 package controller;
 
-import com.mysql.cj.jdbc.MysqlDataSurce;
+import com.mysql.cj.jdbc.MysqlDataSource;
 import java.sql.Connection;
 
 /**
