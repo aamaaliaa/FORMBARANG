@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -44,7 +45,6 @@ public class daoPegawai {
                 noUrut = rs.getInt("urut");
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
         return noUrut;
     }
@@ -62,8 +62,8 @@ public class daoPegawai {
             statement.setString(7, peg.getPassword());
             statement.executeUpdate();
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
+
     }
 
     public void ubah(Pegawai peg) {
@@ -77,7 +77,6 @@ public class daoPegawai {
             statement.setString(5, peg.getKodepeg());
             statement.executeUpdate();
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
     }
 
@@ -88,7 +87,6 @@ public class daoPegawai {
             statement.setString(1, peg.getKodepeg());
             statement.executeUpdate();
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
     }
 
@@ -130,22 +128,12 @@ public class daoPegawai {
         try {
             statement = connection.prepareStatement(selectData);
             statement.setString(1, peg.getKodepeg());
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                peg.setNamapeg(rs.getString("namapeg"));
-                peg.setAlamat(rs.getString("alamat"));
-                peg.setJkel(rs.getString("jkel"));
-                peg.setJabatan(rs.getString("jabatan"));
-                peg.setUsername(rs.getString("username"));
-                peg.setPassword(rs.getString("password"));
-            }
+            statement.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         } finally {
             try {
-                if (statement != null) {
-                    statement.close();
-                }
+                 statement.close();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
@@ -160,7 +148,6 @@ public class daoPegawai {
             statement.setString(2, peg.getUsername());
             statement.executeUpdate();
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
     }
 
@@ -189,12 +176,11 @@ public class daoPegawai {
     }
 
     public List<Pegawai> getData() {
-        List<Pegawai> listPeg = new ArrayList<>();
-        PreparedStatement statement = null;
-        ResultSet rs = null;
+        List<Pegawai> listPeg = null;
         try {
-            statement = connection.prepareStatement(select);
-            rs = statement.executeQuery();
+            listPeg = new ArrayList<>(); 
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(select);
             while (rs.next()) {
                 Pegawai peg = new Pegawai();
                 peg.setKodepeg(rs.getString("kodepeg"));

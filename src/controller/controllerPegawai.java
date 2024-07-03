@@ -55,11 +55,11 @@ public class controllerPegawai {
 
     public void tambahData() {
         tambahPeg.setKodepeg(frame.getTxtkodepeg().getText());
-        tambahPeg.setNamapeg(frame.getTxtnampeg().getText());
+        tambahPeg.setNamapeg(frame.getTxtnamapeg().getText());
         tambahPeg.setAlamat(frame.getTxtalamat().getText());
         tambahPeg.setJabatan(frame.getTxtjabatan().getText());
         tambahPeg.setJkel(frame.getJenkel());
-        tambahPeg.setUsername(frame.getTxtusername().getText());
+        tambahPeg.setUsername(frame.getTxtusename().getText());
         tambahPeg.setPassword(frame.getTxtpassword().getText());
         daoPeg.tambah(tambahPeg);
         JOptionPane.showMessageDialog(frame, "Berhasil menambahkan data baru");
@@ -67,10 +67,12 @@ public class controllerPegawai {
 
     public void ubahData() {
         tambahPeg.setKodepeg(frame.getTxtkodepeg().getText());
-        tambahPeg.setNamapeg(frame.getTxtnampeg().getText());
+        tambahPeg.setNamapeg(frame.getTxtnamapeg().getText());
         tambahPeg.setAlamat(frame.getTxtalamat().getText());
         tambahPeg.setJabatan(frame.getTxtjabatan().getText());
         tambahPeg.setJkel(frame.getJenkel());
+        tambahPeg.setUsername(frame.getTxtusename().getText());
+        tambahPeg.setPassword(frame.getTxtpassword().getText());
         daoPeg.ubah(tambahPeg);
         JOptionPane.showMessageDialog(frame, "Berhasil mengubah data");
     }
@@ -82,10 +84,10 @@ public class controllerPegawai {
     }
 
     public void cekUsername() {
-        if (frame.getTxtusername().getText().equals("")) {
+        if (frame.getTxtusename().getText().equals("")) {
             JOptionPane.showMessageDialog(frame, "Username belum diisi");
         } else {
-           int row = daoPeg.cekUser(frame.getTxtusername().getText());
+           int row = daoPeg.cekUser(frame.getTxtusename().getText());
            if (row == 0) {
             JOptionPane.showMessageDialog(frame, "Username Tersedia " + row);
         } else {

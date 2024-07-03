@@ -49,5 +49,5 @@ public class TabelModelBarang extends AbstractTableModel {
             case 4 -> "Merek";
             default -> null;
         };
-}
     }
+}

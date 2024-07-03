@@ -14,6 +14,7 @@ import view.FormBarang;
  *
  * @author Lenovo
  */
+
 public class controllerBarang {
     FormBarang frame;
     List<Barang> listBrg;
@@ -27,7 +28,7 @@ public class controllerBarang {
     }
     
     public void tampil_tabel(){
-        TabelModelBarang tabelBrg = new TabelModelBarang (listBrg);
+        TabelModelBarang tabelBrg = new TabelModelBarang(listBrg);
         frame.getTblBarang().setModel(tabelBrg);
     }
     
@@ -75,4 +76,5 @@ public class controllerBarang {
     public void keluar() {
         frame.dispose();
     }
+    
 }

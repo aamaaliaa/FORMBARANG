@@ -4,7 +4,7 @@
  */
 package view;
 import controller.controllerPegawai;
-import javax.swing.JLabel; 
+//import javax.swing.JLabel; 
 import javax.swing.JOptionPane; 
 //import javax.swing.JRadioButton;
 import javax.swing.JTable;
@@ -28,18 +28,72 @@ public class FormPegawai extends javax.swing.JFrame {
     }
     public void tampilkantabel() {
     cPeg = new controllerPegawai (this);
-    cPeg.tampil_tabel ();
+    cPeg.tampil_tabel();
     }
     public void bersih() {
     txtKodePeg.setText("");
     txtNamaPeg.setText("");
     txtAlamat.setText("");
     rbLaki.setSelected(true);
-    txtJabatan.setText("");
+    txtjabatan.setText("");
     txtUserName.setText("");
-    txtPassword.setText("");
+    txtpassword.setText("");
     }
     
+    String jenkel; 
+    
+    public String getJenkel() {
+    return jenkel;
+    }
+    
+    public void setJenkel(String jenkel){
+        this.jenkel = jenkel;
+    }
+    
+    public JTable getTblpegawai() {
+        return tblpegawai;
+    }
+     public void setTblpegawai(JTable tblpegawai){
+        this.tblpegawai = tblpegawai;
+    }
+    public JTextField getTxtalamat() {
+        return txtAlamat;
+    }
+     public void setTxtalamat(String txtalamat){
+        this.txtAlamat.setText(txtalamat);
+    } 
+     public JTextField getTxtjabatan() {
+        return txtjabatan;
+    }
+     public void setTxtjabatan(String txtjabatan){
+        this.txtjabatan.setText(txtjabatan);
+    }  
+     public JTextField getTxtkodepeg() {
+        return txtKodePeg;
+    }
+     public void setTxtkodepeg(String txtkodepeg){
+        this.txtKodePeg.setText(txtkodepeg);
+    }
+     public JTextField getTxtnamapeg() {
+        return txtNamaPeg;
+    }
+     public void setTxtnamapeg(String txtnamapeg){
+        this.txtNamaPeg.setText(txtnamapeg);
+    }
+     public JTextField getTxtpassword() {
+        return txtpassword;
+    }
+     public void setTxtpassword(String txtpassword){
+        this.txtpassword.setText(txtpassword);
+    }
+     public JTextField getTxtusename() {
+        return txtUserName;
+    }
+     public void setTxtusername(String txtusername){
+        this.txtUserName.setText(txtusername);
+    }
+  
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,11 +125,11 @@ public class FormPegawai extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtJabatan = new javax.swing.JTextField();
+        txtjabatan = new javax.swing.JTextField();
         btnCek = new javax.swing.JButton();
-        txtPassword = new javax.swing.JPasswordField();
+        txtpassword = new javax.swing.JPasswordField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPegawai = new javax.swing.JTable();
+        tblpegawai = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,7 +158,7 @@ public class FormPegawai extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 102, 102));
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel2.setText("NIK");
+        jLabel2.setText("KODE ");
 
         txtKodePeg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +170,11 @@ public class FormPegawai extends javax.swing.JFrame {
         btnSimpan.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnSimpan.setText("Simpan");
         btnSimpan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel3.setText("NAMA");
@@ -124,6 +183,11 @@ public class FormPegawai extends javax.swing.JFrame {
         btnUbah.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnUbah.setText("Ubah");
         btnUbah.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel4.setText("ALAMAT");
@@ -145,6 +209,11 @@ public class FormPegawai extends javax.swing.JFrame {
         btnHapus.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel6.setText("J.KEL");
@@ -153,6 +222,11 @@ public class FormPegawai extends javax.swing.JFrame {
         btnKeluar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnKeluar.setText("Keluar");
         btnKeluar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeluarActionPerformed(evt);
+            }
+        });
 
         jkel.add(rbLaki);
         rbLaki.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -189,7 +263,11 @@ public class FormPegawai extends javax.swing.JFrame {
             }
         });
 
-        txtPassword.setText("jPasswordField1");
+        txtpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpasswordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -208,7 +286,7 @@ public class FormPegawai extends javax.swing.JFrame {
                                 .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnCek, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtPassword))
+                            .addComponent(txtpassword))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -220,7 +298,7 @@ public class FormPegawai extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtJabatan, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtjabatan, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -267,7 +345,7 @@ public class FormPegawai extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
                         .addComponent(btnHapus))
-                    .addComponent(txtJabatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtjabatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -282,11 +360,11 @@ public class FormPegawai extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        tblPegawai.setModel(new javax.swing.table.DefaultTableModel(
+        tblpegawai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -300,10 +378,15 @@ public class FormPegawai extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "NIK", "Nama Pegawai", "Alamat", "Jabatan", "Jenis Kelamin", "Username", "Password"
+                "Kode Pegawai", "Nama Pegawai", "Alamat", "Jenis Kelamin", "Jabatan", "Username", "Password"
             }
         ));
-        jScrollPane1.setViewportView(tblPegawai);
+        tblpegawai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblpegawaiMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblpegawai);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -337,7 +420,8 @@ public class FormPegawai extends javax.swing.JFrame {
     }//GEN-LAST:event_txtKodePegActionPerformed
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
-        // TODO add your handling code here:
+       bersih();
+    txtKodePeg.requestFocus ();
     }//GEN-LAST:event_btnBatalActionPerformed
 
     private void rbLakiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLakiActionPerformed
@@ -347,10 +431,74 @@ public class FormPegawai extends javax.swing.JFrame {
     private void rbPerempuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPerempuanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbPerempuanActionPerformed
-
-    private void btnCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekActionPerformed
-        // TODO add your handling code here:
+          private void btnCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekActionPerformed
+       cPeg.cekUsername();
     }//GEN-LAST:event_btnCekActionPerformed
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+       
+    }//GEN-LAST:event_txtpasswordActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+//     cPeg.otomatisasiKodePeg();
+    if (txtKodePeg.getText().isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Kode Pegawai belum diisi"); }
+    else { 
+    jenkel = rbLaki.isSelected() ? "L": "P";
+    cPeg.tambahData();
+    }
+    tampilkantabel();
+    bersih ();
+    cPeg.otomatisasiKodePeg();
+    txtKodePeg.requestFocus ();
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
+        if (txtKodePeg.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Kode Pegawai Belum diisi");
+        } else {
+            jenkel = rbLaki.isSelected() ? "L" : "P";
+        }   cPeg.ubahData();
+        
+        tampilkantabel();
+        bersih();
+        txtKodePeg.requestFocus();
+    }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void tblpegawaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblpegawaiMouseClicked
+        
+        int pilih = tblpegawai.getSelectedRow();
+        
+        String jenkel =tblpegawai.getModel().getValueAt(pilih,3).toString();
+        if (jenkel.equals("L")) {
+            rbLaki.setSelected(true);
+        } else {
+            rbPerempuan.setSelected(true);
+        }
+        
+        txtKodePeg.setText(tblpegawai.getModel().getValueAt (pilih, 0).toString()); 
+        txtNamaPeg.setText (tblpegawai.getModel().getValueAt (pilih, 1).toString()); 
+        txtAlamat.setText (tblpegawai.getModel().getValueAt (pilih, 2).toString()); 
+        txtjabatan.setText (tblpegawai.getModel().getValueAt (pilih, 4).toString()); 
+        txtUserName.setText (tblpegawai.getModel().getValueAt (pilih, 5).toString()); 
+        txtpassword.setText (tblpegawai.getModel().getValueAt (pilih, 6).toString());
+    }//GEN-LAST:event_tblpegawaiMouseClicked
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        Pegawai peg = new Pegawai();
+          if (txtKodePeg.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Kode Brang Belum diisi");
+        } else {
+        }   cPeg.hapusData(peg.getKodepeg());
+        
+        tampilkantabel();
+        bersih();
+        txtKodePeg.requestFocus();
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+    dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKeluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -408,13 +556,13 @@ public class FormPegawai extends javax.swing.JFrame {
     private javax.swing.ButtonGroup jkel;
     private javax.swing.JRadioButton rbLaki;
     private javax.swing.JRadioButton rbPerempuan;
-    private javax.swing.JTable tblPegawai;
+    private javax.swing.JTable tblpegawai;
     private javax.swing.JTextField txtAlamat;
-    private javax.swing.JTextField txtJabatan;
     private javax.swing.JTextField txtKodePeg;
     private javax.swing.JTextField txtNamaPeg;
-    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
+    private javax.swing.JTextField txtjabatan;
+    private javax.swing.JPasswordField txtpassword;
     // End of variables declaration//GEN-END:variables
 
    

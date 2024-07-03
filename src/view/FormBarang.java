@@ -73,6 +73,7 @@ public class FormBarang extends javax.swing.JFrame {
     public void setTxtNama(String txtNama) {
         this.txtNama.setText(txtNama);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,6 +137,11 @@ public class FormBarang extends javax.swing.JFrame {
         btnSimpan.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnSimpan.setText("Simpan");
         btnSimpan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel3.setText("NAMA");
@@ -144,13 +150,18 @@ public class FormBarang extends javax.swing.JFrame {
         btnUbah.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnUbah.setText("Ubah");
         btnUbah.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel4.setText("JUMLAH");
 
         btnBatal.setBackground(new java.awt.Color(204, 204, 204));
         btnBatal.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        btnBatal.setText("Bersih");
+        btnBatal.setText("Batal");
         btnBatal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,6 +176,11 @@ public class FormBarang extends javax.swing.JFrame {
         btnHapus.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel6.setText("MEREK");
@@ -173,6 +189,11 @@ public class FormBarang extends javax.swing.JFrame {
         btnKeluar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnKeluar.setText("Keluar");
         btnKeluar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeluarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -264,6 +285,11 @@ public class FormBarang extends javax.swing.JFrame {
                 "Kode Barang", "Nama Barang", "Jumlah", "Harga", "Merek"
             }
         ));
+        tblBarang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBarangMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBarang);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -294,8 +320,44 @@ public class FormBarang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
-        // TODO add your handling code here:
+        cBarang.bersih();
     }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        cBarang.tambahData();
+        tampilkantabel();
+        cBarang.bersih();
+        txtKode.requestFocus();
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
+       cBarang.ubahData();
+       tampilkantabel();
+       cBarang.bersih();
+       txtKode.requestFocus();
+        
+    }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+
+        cBarang.hapusData();
+        tampilkantabel();
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+
+        cBarang.keluar();
+    }//GEN-LAST:event_btnKeluarActionPerformed
+
+    private void tblBarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBarangMouseClicked
+        // TODO add your handling code here:
+        int pilih = tblBarang.getSelectedRow();
+        txtKode.setText(tblBarang.getModel().getValueAt(pilih, 0).toString());
+        txtNama.setText(tblBarang.getModel().getValueAt(pilih, 1).toString());
+        txtJumlah.setText(tblBarang.getModel().getValueAt(pilih, 2).toString());
+        txtHarga.setText(tblBarang.getModel().getValueAt(pilih, 3).toString());
+        txtMerek.setText(tblBarang.getModel().getValueAt(pilih, 4).toString());
+    }//GEN-LAST:event_tblBarangMouseClicked
 
     /**
      * @param args the command line arguments
@@ -325,10 +387,8 @@ public class FormBarang extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormBarang().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FormBarang().setVisible(true);
         });
     }
 
